@@ -1,0 +1,10 @@
+## Interface: 90002
+## Title: Redeemer
+## Notes: Resurrection messages. 
+## Dependencies:
+## SavedVariables: RedeemernoTargetQuotes, RedeemerhunterQuotes, RedeemercombatQuotes, RedeemerwarlockQuotes, RedeemerselfQuotes, RedeemerengineerQuotes, RedeemerghoulQuotes, RedeemernoghoulQuotes, RedeemermassQuotes, RedeemerotherQuotes, RedeemerCurrentVersion    
+## SavedVariablesPerCharacter: RedeemerDisplaySay, RedeemerDisplayParty, RedeemerDisplayRaid, RedeemerDisplayWhisper
+## Version: v2.0.0
+RedeemerQuotes.lua
+Redeemer.lua
+Redeemer.xml

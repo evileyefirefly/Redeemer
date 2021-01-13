@@ -1,0 +1,352 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
+    <Button name="QuoteButton" virtual="true">
+        <ButtonText name="$parentText" justifyH="LEFT" />
+        <NormalFont style="GameFontNormal" />
+        <HighlightFont style="GameFontHighlight" />
+        <DisabledFont style="GameFontDisabled" />
+        <HighlightTexture inherits="UIPanelButtonHighlightTexture" />
+        <Scripts>
+            <OnClick>
+                QuoteButton_Select(self);
+            </OnClick>
+        </Scripts>
+    </Button>
+    <Frame name="Redeemer">
+        <Scripts>
+            <OnLoad>
+                Redeemer_OnLoad(self);
+            </OnLoad>
+            <OnEvent>Redeemer_OnEvent(self, event, ...);</OnEvent>
+        </Scripts>
+        <Frames>
+            <Frame name="$parentUIPanel">
+                <Frames>
+                    <Frame name="$parentDisplayOptions">
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="16" y="-16" />
+                                </Offset>
+                            </Anchor>
+                            <Anchor point="BOTTOM" relativePoint="CENTER">
+                                <Offset>
+                                    <AbsDimension x="0" y="100" />
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Backdrop
+                            edgefile="Interface\Tooltips\UI-Tooltip-Border"
+                            tile="true" >
+                            <EdgeSize>
+                                <AbsValue val="16" />
+                            </EdgeSize>
+                        </Backdrop>
+                        <Layers>
+                            <Layer level="ARTWORK">
+                                <FontString
+                                    name="$parentDisplayTitle"
+                                    text="Message Display Options"
+                                    inherits="GameFontHighlight"
+                                    justifyH="LEFT">
+                                    <Anchors>
+                                        <Anchor point="TOPLEFT">
+                                            <Offset>
+                                                <AbsDimension x="16" y="-16" />
+                                            </Offset>
+                                        </Anchor>
+                                    </Anchors>
+                                </FontString>
+                                <Texture
+                                    name="$parentDisplayTitleUnderline"
+                                    inherits="videoUnderline">
+                                    <Anchors>
+                                        <Anchor
+                                            point="TOPLEFT"
+                                            relativeTo="$parentDisplayTitle"
+                                            relativePoint="BOTTOMLEFT">
+                                            <Offset>
+                                                <AbsDimension x="0" y="-3" />
+                                            </Offset>
+                                        </Anchor>
+                                        <Anchor point="RIGHT">
+                                            <Offset>
+                                                <AbsDimension x="-16" y="0" />
+                                            </Offset>
+                                        </Anchor>
+                                    </Anchors>
+                                </Texture>
+                            </Layer>
+                        </Layers>
+                        <Frames>
+                            <CheckButton
+                                name="$parentWhisper"
+                                inherits="InterfaceOptionsCheckButtonTemplate">
+                                <Anchors>
+                                    <Anchor
+                                        point="TOPLEFT"
+                                        relativeTo="$parentDisplayTitle"
+                                        relativePoint="BOTTOMLEFT">
+                                        <Offset>
+                                            <AbsDimension x="4" y="-8" />
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Scripts>
+                                    <OnLoad>
+                                        self.type = CONTROLTYPE_CHECKBOX;
+                                        self.text = _G[self:GetName().."Text"];
+                                        self.text:SetText("Whisper");
+                                        self:SetChecked(_G["RedeemerDisplayWhisper"]);
+                                    </OnLoad>
+                                </Scripts>
+                            </CheckButton>
+                            <CheckButton name="$parentSay" inherits="InterfaceOptionsCheckButtonTemplate">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeTo="$parentWhisper" relativePoint="BOTTOMLEFT">
+                                        <Offset>
+                                            <AbsDimension x="0" y="-4" />
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Scripts>
+                                    <OnLoad>
+                                        self.type = CONTROLTYPE_CHECKBOX;
+                                        self.text = _G[self:GetName().."Text"];
+                                        self.text:SetText("Say");
+                                        self:SetChecked(_G["RedeemerDisplaySay"]);
+                                    </OnLoad>
+                                </Scripts>
+                            </CheckButton>
+                            <CheckButton name="$parentParty" inherits="InterfaceOptionsCheckButtonTemplate">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeTo="$parentSay" relativePoint="BOTTOMLEFT">
+                                        <Offset>
+                                            <AbsDimension x="0" y="-4" />
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Scripts>
+                                    <OnLoad>
+                                        self.type = CONTROLTYPE_CHECKBOX;
+                                        self.text = _G[self:GetName().."Text"];
+                                        self.text:SetText("Party");
+                                        self:SetChecked(_G["RedeemerDisplayParty"]);
+                                    </OnLoad>
+                                </Scripts>
+                            </CheckButton>
+                            <CheckButton name="$parentRaid" inherits="InterfaceOptionsCheckButtonTemplate">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeTo="$parentParty" relativePoint="BOTTOMLEFT">
+                                        <Offset>
+                                            <AbsDimension x="0" y="-4" />
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Scripts>
+                                    <OnLoad>
+                                        self.type = CONTROLTYPE_CHECKBOX;
+                                        self.text = _G[self:GetName().."Text"];
+                                        self.text:SetText("Raid");
+                                        self:SetChecked(_G["RedeemerDisplayRaid"]);
+                                    </OnLoad>
+                                </Scripts>
+                            </CheckButton>
+                        </Frames>
+                    </Frame> <!--Display Options-->
+                    <Frame name="$parentQuoteOptions">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentDisplayOptions" relativePoint="BOTTOMLEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="-4" />
+                                </Offset>
+                            </Anchor>
+                            <Anchor point="BOTTOM" relativePoint="BOTTOM">
+                                <Offset>
+                                    <AbsDimension x="0" y="16" />
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Backdrop
+                            edgefile="Interface\Tooltips\UI-Tooltip-Border"
+                            tile="true" >
+                            <EdgeSize>
+                                <AbsValue val="16" />
+                            </EdgeSize>
+                        </Backdrop>
+                        <Frames>
+                            <Frame name="$parentTypeDropDown" inherits="UIDropDownMenuTemplate">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT">
+                                        <Offset>
+                                            <AbsDimension x="4" y="-4" />
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Scripts>
+                                    <OnLoad>
+                                        UIDropDownMenu_SetWidth(self, 200);
+                                        UIDropDownMenu_SetText(self, QUOTELIST_NAMES[1]);
+                                        UIDropDownMenu_Initialize(self, RedeemerUIPanelQuoteOptionsTypeDropDown_Menu);
+                                    </OnLoad>
+                                </Scripts>
+                            </Frame><!--Type DropDown-->
+                            <Button name="$parentDelete"
+                                inherits="UIPanelButtonTemplate"
+                                text="Delete">
+                                <Anchors>
+                                    <Anchor
+                                        point="LEFT"
+                                        relativeTo="$parentTypeDropDown"
+                                        relativePoint="RIGHT">
+                                        <Offset>
+                                            <AbsDimension x="8" y="0" />
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Size>
+                                    <AbsDimension x="96" y="22" />
+                                </Size>
+                                <Scripts>
+                                    <OnClick>
+                                        RedeemerDeleteQuote_OnClick();
+                                    </OnClick>
+                                </Scripts>
+                            </Button><!--Delete button-->
+                            <Button name="$parentEdit"
+                                inherits="UIPanelButtonTemplate"
+                                text="Edit">
+                                <Anchors>
+                                    <Anchor
+                                        point="LEFT"
+                                        relativeTo="$parentDelete"
+                                        relativePoint="RIGHT">
+                                        <Offset>
+                                            <AbsDimension x="8" y="0" />
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Size>
+                                    <AbsDimension x="96" y="22" />
+                                </Size>
+                                <Scripts>
+                                    <OnClick>
+                                        RedeemerEditQuote_OnClick();
+                                    </OnClick>
+                                </Scripts>
+                            </Button><!--Edit button-->
+                            <Button name="$parentAdd"
+                                inherits="UIPanelButtonTemplate"
+                                text="Add">
+                                <Anchors>
+                                    <Anchor
+                                        point="LEFT"
+                                        relativeTo="$parentEdit"
+                                        relativePoint="RIGHT">
+                                        <Offset>
+                                            <AbsDimension x="2" y="0" />
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Size>
+                                    <AbsDimension x="96" y="22" />
+                                </Size>
+                                <Scripts>
+                                    <OnClick>
+                                        RedeemerAddQuote_OnClick();
+                                    </OnClick>
+                                </Scripts>
+                            </Button><!--Add button-->
+                            <Frame name="$parentQuoteListContainer">
+                                <Anchors>
+                                    <Anchor
+                                        point="TOPLEFT">
+                                        <Offset>
+                                            <AbsDimension x="0" y="-28" />
+                                        </Offset>
+                                    </Anchor>
+                                    <Anchor
+                                        point="BOTTOMRIGHT"
+                                        relativePoint="BOTTOMRIGHT">
+                                        <Offset>
+                                            <AbsDimension x="0" y="0" />
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Scripts>
+                                    <OnLoad>
+                                        MakeQuoteButtons(self);
+                                        QuoteButtonText_Update(TypeDropDown_CurrentValue, 1);
+                                    </OnLoad>
+                                </Scripts>
+                            </Frame> <!--QuoteList container-->
+                            <Button name="$parentNext" inherits="UIPanelButtonTemplate" text="Next">
+                                <Anchors>
+                                    <Anchor
+                                        point="BOTTOMRIGHT"
+                                        relativePoint="BOTTOMRIGHT">
+                                        <Offset>
+                                            <AbsDimension x="-5" y="5" />
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Size x="50" y="22" />
+                                <Scripts>
+                                    <OnClick>
+                                        RedeemerUIPanelQuoteOptionsNext_OnClick();
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+                            <Button name="$parentRange" text="1-10 of 30">
+                                <Anchors>
+                                    <Anchor
+                                        point="RIGHT"
+                                        relativeTo="$parentNext"
+                                        relativePoint="LEFT">
+                                        <Offset x="-3" y="0" />
+                                    </Anchor>
+                                </Anchors>
+                                <Size x="70" y="22" />
+                                <ButtonText name="$parentText" />
+                                <NormalFont style="GameFontNormal" />
+                                <DisabledFont style="GameFontNormal" />
+                                <Scripts>
+                                    <OnLoad>
+                                        self:Disable();
+                                        QuoteButtonText_Update(TypeDropDown_CurrentValue, QuoteList_CurrentStartIndex);
+                                    </OnLoad>
+                                </Scripts>
+                            </Button>
+                            <Button name="$parentPrevious" inherits="UIPanelButtonTemplate" text="Prev">
+                                <Anchors>
+                                    <Anchor
+                                        point="RIGHT"
+                                        relativeTo="$parentRange"
+                                        relativePoint="LEFT">
+                                        <Offset x="-3" y="0" />
+                                    </Anchor>
+                                </Anchors>
+                                <Size x="50" y="22" />
+                                <Scripts>
+                                    <OnClick>
+                                        RedeemerUIPanelQuoteOptionsPrevious_OnClick();
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+                        </Frames>
+                        <Scripts>
+                            <OnShow>
+                                QuoteButtonText_Update(TypeDropDown_CurrentValue, QuoteList_CurrentStartIndex);
+                                RedeemerUIPanel_InitTempVars();
+                            </OnShow>
+                        </Scripts>
+                    </Frame> <!--Quote Options-->
+                </Frames>
+                <Scripts>
+                    <OnLoad>
+                        RedeemerUIPanelOnLoad(self);
+                    </OnLoad>
+                </Scripts>
+            </Frame> <!--UIPanel-->
+        </Frames>
+    </Frame> <!--main addon frame-->
+</Ui>
