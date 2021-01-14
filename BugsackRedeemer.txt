@@ -1,0 +1,115 @@
+36x Redeemer\Redeemer-v2.0.0.lua:125: ')' expected near '='
+Locals:
+
+9x [string "Redeemer:OnLoad"]:1: attempt to call global 'Redeemer_OnLoad' (a nil value)
+[string "*:OnLoad"]:1: in function <[string "*:OnLoad"]:1>
+
+Locals:
+self = Redeemer {
+ 0 = <userdata>
+}
+(*temporary) = nil
+(*temporary) = Redeemer {
+ 0 = <userdata>
+}
+(*temporary) = "attempt to call global 'Redeemer_OnLoad' (a nil value)"
+
+
+
+9x [string "RedeemerUIPanel:OnLoad"]:1: attempt to call global 'RedeemerUIPanelOnLoad' (a nil value)
+[string "*:OnLoad"]:1: in function <[string "*:OnLoad"]:1>
+
+Locals:
+self = RedeemerUIPanel {
+ 0 = <userdata>
+}
+(*temporary) = nil
+(*temporary) = RedeemerUIPanel {
+ 0 = <userdata>
+}
+(*temporary) = "attempt to call global 'RedeemerUIPanelOnLoad' (a nil value)"
+
+
+
+9x [string "RedeemerUIPanelQuoteOptions:OnShow"]:1: attempt to call global 'QuoteButtonText_Update' (a nil value)
+[string "*:OnShow"]:1: in function <[string "*:OnShow"]:1>
+
+Locals:
+self = RedeemerUIPanelQuoteOptions {
+ 0 = <userdata>
+}
+(*temporary) = nil
+(*temporary) = nil
+(*temporary) = nil
+(*temporary) = "attempt to call global 'QuoteButtonText_Update' (a nil value)
+
+
+
+9x [string "RedeemerUIPanelQuoteOptionsRange:OnLoad"]:2: attempt to call global 'QuoteButtonText_Update' (a nil value)
+[string "*:OnLoad"]:2: in function <[string "*:OnLoad"]:1>
+
+Locals:
+self = RedeemerUIPanelQuoteOptionsRange {
+ 0 = <userdata>
+}
+(*temporary) = nil
+(*temporary) = nil
+(*temporary) = nil
+(*temporary) = "attempt to call global 'QuoteButtonText_Update' (a nil value)"
+
+
+
+9x [string "RedeemerUIPanelQuoteOptionsQuoteListContainer:OnLoad"]:1: attempt to call global 'MakeQuoteButtons' (a nil value)
+[string "*:OnLoad"]:1: in function <[string "*:OnLoad"]:1>
+
+Locals:
+self = RedeemerUIPanelQuoteOptionsQuoteListContainer {
+ 0 = <userdata>
+}
+(*temporary) = nil
+(*temporary) = RedeemerUIPanelQuoteOptionsQuoteListContainer {
+ 0 = <userdata>
+}
+(*temporary) = "attempt to call global 'MakeQuoteButtons' (a nil value)"
+
+
+
+9x [string "RedeemerUIPanelQuoteOptionsTypeDropDown:OnLoad"]:2: attempt to index global 'QUOTELIST_NAMES' (a nil value)
+[string "*:OnLoad"]:2: in function <[string "*:OnLoad"]:1>
+
+Locals:
+self = RedeemerUIPanelQuoteOptionsTypeDropDown {
+ 0 = <userdata>
+ Left = RedeemerUIPanelQuoteOptionsTypeDropDownLeft {
+ }
+ Text = RedeemerUIPanelQuoteOptionsTypeDropDownText {
+ }
+ Icon = RedeemerUIPanelQuoteOptionsTypeDropDownIcon {
+ }
+ Button = RedeemerUIPanelQuoteOptionsTypeDropDownButton {
+ }
+ Right = RedeemerUIPanelQuoteOptionsTypeDropDownRight {
+ }
+ Middle = RedeemerUIPanelQuoteOptionsTypeDropDownMiddle {
+ }
+ noResize = 1
+}
+(*temporary) = <function> defined @SharedXML\UIDropDownMenu.lua:1238
+(*temporary) = RedeemerUIPanelQuoteOptionsTypeDropDown {
+ 0 = <userdata>
+ Left = RedeemerUIPanelQuoteOptionsTypeDropDownLeft {
+ }
+ Text = RedeemerUIPanelQuoteOptionsTypeDropDownText {
+ }
+ Icon = RedeemerUIPanelQuoteOptionsTypeDropDownIcon {
+ }
+ Button = RedeemerUIPanelQuoteOptionsTypeDropDownButton {
+ }
+ Right = RedeemerUIPanelQuoteOptionsTypeDropDownRight {
+ }
+ Middle = RedeemerUIPanelQuoteOptionsTypeDropDownMiddle {
+ }
+ noResize = 1
+}
+(*temporary) = nil
+(*temporary) = "attempt to index global 'QUOTELIST_NAMES' (a nil value)"
