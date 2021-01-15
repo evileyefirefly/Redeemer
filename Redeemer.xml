@@ -3,7 +3,7 @@
         <ButtonText name="$parentText" justifyH="LEFT" />
         <NormalFont style="GameFontNormal" />
         <HighlightFont style="GameFontHighlight" />
-        <DisabledFont style="GameFontDisabled" />
+        <DisabledFont style="GameFontDisable" />
         <HighlightTexture inherits="UIPanelButtonHighlightTexture" />
         <Scripts>
             <OnClick>

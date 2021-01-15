@@ -105,7 +105,7 @@ function Redeemer_OnEvent(self, event, ...)
     end
 
     if (event == "UNIT_SPELLCAST_SENT") then
-        local unitID, spellID, _, target = ...;
+        local unitID, target, _, spellID = ...;
         --arg3, rank, was deprecated in 4.0
         --[[
         DEFAULT_CHAT_FRAME:AddMessage(tostring(event));
@@ -122,7 +122,7 @@ function Redeemer_OnEvent(self, event, ...)
                 Redeemer_Quotes("Shaman", target);
             elseif (spellID == 50769) then
                 Redeemer_Quotes("Druid", target);
-            elseif (spellID = 115178) then
+            elseif (spellID == 115178) then
                 Redeemer_Quotes("Monk", target);
             elseif (spellID == 982) then
                 if (PET_NAME) then
@@ -140,9 +140,7 @@ function Redeemer_OnEvent(self, event, ...)
                 Redeemer_Quotes("DeathKnightAlly", target)
             elseif (spellID == 95750) then
                 Redeemer_Quotes("Warlock", target);
-            elseif (spellID == 212051) then
-                Redeemer_Quotes("Mass", "");
-			elseif (spellID == 212048) then
+            elseif (spellID == 212051 or 212040 or 212056 or 212036 or 212048) then
                 Redeemer_Quotes("Mass", "");
             end
         end
@@ -196,7 +194,7 @@ function Redeemer_Quotes(playerClass, target)
     local quoteSource;
     if (string.upper(target) == "UNKNOWN") then
         quoteSource = RedeemernoTargetQuotes;
-    elseif (playerClass == 212051) then
+    elseif (playerClass == "Mass") then
         quoteSource = RedeemermassQuotes;
     elseif (playerClass == "Hunter") then
         quoteSource = RedeemerhunterQuotes;
@@ -237,8 +235,10 @@ function Redeemer_SendQuotes(chatMessage, target)
         else
             SendChatMessage(chatMessage, "PARTY");
         end
-    elseif (RedeemerDisplaySay) then
+    elseif (RedeemerDisplaySay and IsInGroup()) then
         SendChatMessage(chatMessage, "SAY");
+	else
+		SendChatMessage(chatMessage, "WHISPER", nil, UnitName("Player"))
     end
 
     if (RedeemerDisplayWhisper and string.upper(target) ~= "UNKNOWN" and target ~= "") then
