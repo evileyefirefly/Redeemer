@@ -125,11 +125,7 @@ function Redeemer_OnEvent(self, event, ...)
             elseif (spellID == 115178) then
                 Redeemer_Quotes("Monk", target);
             elseif (spellID == 982) then
-                if (PET_NAME) then
-                    Redeemer_Quotes("Hunter", PET_NAME);
-                    --else
-                    --if no pet name, fail silently
-                end
+                Redeemer_Quotes("Hunter", "");
             elseif (spellID == 20484) then
                 Redeemer_Quotes("Combat", target);
             elseif (spellID == 54732) then
@@ -140,7 +136,15 @@ function Redeemer_OnEvent(self, event, ...)
                 Redeemer_Quotes("DeathKnightAlly", target)
             elseif (spellID == 95750) then
                 Redeemer_Quotes("Warlock", target);
-            elseif (spellID == 212051 or 212040 or 212056 or 212036 or 212048) then
+            elseif (spellID == 212051) then
+                Redeemer_Quotes("Mass", "");
+            elseif (spellID == 212040) then
+                Redeemer_Quotes("Mass", "");
+            elseif (spellID == 212056) then
+                Redeemer_Quotes("Mass", "");
+            elseif (spellID == 212036) then
+                Redeemer_Quotes("Mass", "");
+            elseif (spellID == 212048) then
                 Redeemer_Quotes("Mass", "");
             end
         end

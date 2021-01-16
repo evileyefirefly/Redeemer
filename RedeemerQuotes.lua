@@ -41,22 +41,22 @@ noTargetQuotes = {  --These should not have "%t" in them.
     
 }
 
-hunterQuotes = {        --Used when casting Revive Pet
+hunterQuotes = {        --Used when casting Revive Pet no %t currently
 
-    "Forgive me, %t! Your death only adds to my failure!",
-    "Just remember, %t--better you than me!",   --duplicated in otherQuotes
-    "See, %t, this is what happens when you demand the expensive kibble.",
+    "Forgive me, My Pet! Your death only adds to my failure!",
+    "Just remember, My Pet--better you than me!",   --duplicated in otherQuotes
+    "See, My Pet, this is what happens when you demand the expensive kibble.",
     "Arise, my champion!",
     "Hmm...Beast Training...where's the \"not standing in the fire\" trick?",
     "Mend Pet? What's that?",
-    "Quit dying, %t, or I'll trade you in for a druid.",
-    "You can has second chance at life, %t!",
-    "%t! Don't leave your corpse on the carpet!",
+    "Quit dying, My Pet, or I'll trade you in for a druid.",
+    "You can has second chance at life, My Pet!",
+    "My Pet! Don't leave your corpse on the carpet!",
     "I need a hero!",
     "Claw claw bite! Claw claw...dead.",
-    "The planet devastated, death winging around...it's too much! I need you by my side, %t.",
-    "At least I won't have to flush you down the toilet, %t.",
-    "Who's a dead %t? You are! Yes you are a dead %t!",
+    "The planet devastated, death winging around...it's too much! I need you by my side, My Pet.",
+    "At least I won't have to flush you down the toilet, My Pet.",
+    "Who's a dead Pet? You are! Yes you are a dead Pet!",
     "A little more protect and serve, a little less dying, please.",
     
 }
