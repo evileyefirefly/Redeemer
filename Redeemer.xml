@@ -96,8 +96,8 @@
                                         self.type = CONTROLTYPE_CHECKBOX;
                                         self.text = _G[self:GetName().."Text"];
                                         self.text:SetText("Whisper");
-                                        self:SetChecked(_G["RedeemerDisplayWhisper"]);
-                                    </OnLoad>
+                                        self:SetChecked(_G["RedeemerDisplayWhisper"]);										self.SetValue = function() end;
+										</OnLoad>
                                 </Scripts>
                             </CheckButton>
                             <CheckButton name="$parentEMOTE" inherits="InterfaceOptionsCheckButtonTemplate">
@@ -112,8 +112,8 @@
                                     <OnLoad>
                                         self.type = CONTROLTYPE_CHECKBOX;
                                         self.text = _G[self:GetName().."Text"];
-                                        self.text:SetText("EMOTE");
-                                        self:SetChecked(_G["RedeemerDisplayEMOTE"]);
+                                        self.text:SetText("Emote");
+                                        self:SetChecked(_G["RedeemerDisplayEMOTE"]);										self.SetValue = function() end;
                                     </OnLoad>
                                 </Scripts>
                             </CheckButton>
@@ -130,7 +130,7 @@
                                         self.type = CONTROLTYPE_CHECKBOX;
                                         self.text = _G[self:GetName().."Text"];
                                         self.text:SetText("Party");
-                                        self:SetChecked(_G["RedeemerDisplayParty"]);
+                                        self:SetChecked(_G["RedeemerDisplayParty"]);										self.SetValue = function() end;
                                     </OnLoad>
                                 </Scripts>
                             </CheckButton>
@@ -147,7 +147,7 @@
                                         self.type = CONTROLTYPE_CHECKBOX;
                                         self.text = _G[self:GetName().."Text"];
                                         self.text:SetText("Raid");
-                                        self:SetChecked(_G["RedeemerDisplayRaid"]);
+                                        self:SetChecked(_G["RedeemerDisplayRaid"]);										self.SetValue = function() end;
                                     </OnLoad>
                                 </Scripts>
                             </CheckButton>
