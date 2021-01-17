@@ -1,5 +1,5 @@
-1x Redeemer\Redeemer-v2.0.0.lua:182: attempt to call global 'HasSoulstone' (a nil value)
-[string "@Redeemer\Redeemer-v2.0.0.lua"]:182: in function `Redeemer_OnEvent'
+1x Redeemer\Redeemer-v2.0.0.lua:178: attempt to call global 'SelfResurrectOption' (a nil value)
+[string "@Redeemer\Redeemer-v2.0.0.lua"]:178: in function `Redeemer_OnEvent'
 [string "*:OnEvent"]:1: in function <[string "*:OnEvent"]:1>
 
 Locals:
@@ -8,16 +8,16 @@ self = Redeemer {
 }
 event = "PLAYER_DEAD"
 (*temporary) = nil
-(*temporary) = "attempt to call global 'HasSoulstone' (a nil value)"
-
+(*temporary) = "attempt to call global 'SelfResurrectOption' (a nil value)"
 
 
 
     if (event == "PLAYER_DEAD") then
-        "GetSelfResurrectOption" then
-		local _, _, _, canUse, _, _ = ...;
-			if (canUse == true) then
-            RedeemerHasSoulstone = true;
+		if SelfResurrectOption() then 
+			local _, _, _, canUse, _, _ = ...;
+				if (canUse == true) then
+				RedeemerHasSoulstone = true;
+			end
         end
     end
 
@@ -27,3 +27,5 @@ event = "PLAYER_DEAD"
             Redeemer_Quotes("Self", "self");
         end
     end
+
+end
