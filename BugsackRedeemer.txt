@@ -9,3 +9,21 @@ self = Redeemer {
 event = "PLAYER_DEAD"
 (*temporary) = nil
 (*temporary) = "attempt to call global 'HasSoulstone' (a nil value)"
+
+
+
+
+    if (event == "PLAYER_DEAD") then
+        "GetSelfResurrectOption" then
+		local _, _, _, canUse, _, _ = ...;
+			if (canUse == true) then
+            RedeemerHasSoulstone = true;
+        end
+    end
+
+    if (event == "PLAYER_ALIVE") then
+        if (RedeemerHasSoulstone) then
+            RedeemerHasSoulstone = false;
+            Redeemer_Quotes("Self", "self");
+        end
+    end
