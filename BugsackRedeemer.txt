@@ -1,31 +1,29 @@
-1x Redeemer\Redeemer-v2.0.0.lua:178: attempt to call global 'SelfResurrectOption' (a nil value)
-[string "@Redeemer\Redeemer-v2.0.0.lua"]:178: in function `Redeemer_OnEvent'
-[string "*:OnEvent"]:1: in function <[string "*:OnEvent"]:1>
+18x FrameXML\InterfaceOptionsPanels.lua:34: attempt to call method 'SetValue' (a nil value)
+[string "@FrameXML\InterfaceOptionsPanels.lua"]:34: in function `InterfaceOptionsPanel_CheckButton_Update'
+[string "@FrameXML\InterfaceOptionsPanels.lua"]:20: in function `InterfaceOptionsPanel_CheckButton_OnClick'
+[string "*:OnClick"]:6: in function <[string "*:OnClick"]:1>
 
 Locals:
-self = Redeemer {
+checkButton = RedeemerUIPanelDisplayOptionsWhisper {
  0 = <userdata>
+ type = 1
+ value = "0"
+ text = RedeemerUIPanelDisplayOptionsWhisperText {
+ }
+ Text = RedeemerUIPanelDisplayOptionsWhisperText {
+ }
 }
-event = "PLAYER_DEAD"
+setting = "0"
 (*temporary) = nil
-(*temporary) = "attempt to call global 'SelfResurrectOption' (a nil value)"
-
-
-
-    if (event == "PLAYER_DEAD") then
-		if SelfResurrectOption() then 
-			local _, _, _, canUse, _, _ = ...;
-				if (canUse == true) then
-				RedeemerHasSoulstone = true;
-			end
-        end
-    end
-
-    if (event == "PLAYER_ALIVE") then
-        if (RedeemerHasSoulstone) then
-            RedeemerHasSoulstone = false;
-            Redeemer_Quotes("Self", "self");
-        end
-    end
-
-end
+(*temporary) = RedeemerUIPanelDisplayOptionsWhisper {
+ 0 = <userdata>
+ type = 1
+ value = "0"
+ text = RedeemerUIPanelDisplayOptionsWhisperText {
+ }
+ Text = RedeemerUIPanelDisplayOptionsWhisperText {
+ }
+}
+(*temporary) = "0"
+(*temporary) = "attempt to call method 'SetValue' (a nil value)"
+SecureNext = <function> defined @FrameXML\InterfaceOptionsPanels.lua:3

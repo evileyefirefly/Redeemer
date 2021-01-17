@@ -100,7 +100,7 @@
                                     </OnLoad>
                                 </Scripts>
                             </CheckButton>
-                            <CheckButton name="$parentSay" inherits="InterfaceOptionsCheckButtonTemplate">
+                            <CheckButton name="$parentEMOTE" inherits="InterfaceOptionsCheckButtonTemplate">
                                 <Anchors>
                                     <Anchor point="TOPLEFT" relativeTo="$parentWhisper" relativePoint="BOTTOMLEFT">
                                         <Offset>
@@ -112,14 +112,14 @@
                                     <OnLoad>
                                         self.type = CONTROLTYPE_CHECKBOX;
                                         self.text = _G[self:GetName().."Text"];
-                                        self.text:SetText("Say");
-                                        self:SetChecked(_G["RedeemerDisplaySay"]);
+                                        self.text:SetText("EMOTE");
+                                        self:SetChecked(_G["RedeemerDisplayEMOTE"]);
                                     </OnLoad>
                                 </Scripts>
                             </CheckButton>
                             <CheckButton name="$parentParty" inherits="InterfaceOptionsCheckButtonTemplate">
                                 <Anchors>
-                                    <Anchor point="TOPLEFT" relativeTo="$parentSay" relativePoint="BOTTOMLEFT">
+                                    <Anchor point="TOPLEFT" relativeTo="$parentEMOTE" relativePoint="BOTTOMLEFT">
                                         <Offset>
                                             <AbsDimension x="0" y="-4" />
                                         </Offset>

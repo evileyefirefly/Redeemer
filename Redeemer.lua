@@ -1,5 +1,5 @@
 --SavedVariables: RedeemernoTargetQuotes, RedeemerhunterQuotes, RedeemercombatQuotes, RedeemerwarlockQuotes, RedeemerselfQuotes, RedeemerengineerQuotes, RedeemerghoulQuotes, RedeemernoghoulQuotes, RedeemermassQuotes, RedeemerotherQuotes, RedeemerCurrentVersion
---SavedVariablesPerCharacter: RedeemerDisplaySay, RedeemerDisplayParty, RedeemerDisplayRaid, RedeemerDisplayWhisper
+--SavedVariablesPerCharacter: RedeemerDisplayEMOTE, RedeemerDisplayParty, RedeemerDisplayRaid, RedeemerDisplayWhisper
 
 --The "RedeemerxxQuotes" variables store the user's copies of the quotes for
 --each spell. "xxQuotes" variables, without the Redeemer prefix, refer to the
@@ -85,9 +85,9 @@ function Redeemer_OnEvent(self, event, ...)
             end
             Redeemer_Print("Redeemer is locked and loaded!")
             --if an option setting is not found, set it to default
-            if (RedeemerDisplaySay == nil) then
-                Redeemer_Print("Redeemer /say option default  set "..REDEEMER_C_WHITE.."["..REDEEMER_C_ON.."on"..REDEEMER_C_WHITE.."]")
-                RedeemerDisplaySay = true;
+            if (RedeemerDisplayEMOTE == nil) then
+                Redeemer_Print("Redeemer /EMOTE option default  set "..REDEEMER_C_WHITE.."["..REDEEMER_C_ON.."on"..REDEEMER_C_WHITE.."]")
+                RedeemerDisplayEMOTE = true;
             end
             if (RedeemerDisplayParty == nil) then
                 Redeemer_Print("Redeemer /party option default set "..REDEEMER_C_WHITE.."["..REDEEMER_C_OFF.."off"..REDEEMER_C_WHITE.."]")
@@ -175,20 +175,19 @@ function Redeemer_OnEvent(self, event, ...)
     end
 
     if (event == "PLAYER_DEAD") then
-        if (HasSoulstone()) then
-            RedeemerHasSoulstone = true;
+		local resOptions = C_DeathInfo.GetSelfResurrectOptions();
+			if ( resOptions and #resOptions > 0 ) then
+				RedeemerHasSoulstone = true;
+			end
         end
-    end
 
     if (event == "PLAYER_ALIVE") then
         if (RedeemerHasSoulstone) then
             RedeemerHasSoulstone = false;
-            Redeemer_Quotes("Self", "self");
+            Redeemer_Quotes("Self", "");
         end
     end
-
 end
-
 
 function Redeemer_Quotes(playerClass, target)
 
@@ -239,10 +238,10 @@ function Redeemer_SendQuotes(chatMessage, target)
         else
             SendChatMessage(chatMessage, "PARTY");
         end
-    elseif (RedeemerDisplaySay and IsInGroup()) then
-        SendChatMessage(chatMessage, "SAY");
+    elseif (RedeemerDisplayEMOTE and IsInGroup()) then
+        SendChatMessage(chatMessage, "EMOTE");
 	else
-		SendChatMessage(chatMessage, "WHISPER", nil, UnitName("Player"))
+		SendChatMessage(chatMessage, "EMOTE")
     end
 
     if (RedeemerDisplayWhisper and string.upper(target) ~= "UNKNOWN" and target ~= "") then
@@ -255,16 +254,16 @@ function Redeemer_SlashOpts(cmd)
 
     cmd = string.lower(cmd);
 
-    if (cmd == "say") then
-        RedeemerDisplaySay = not RedeemerDisplaySay;
-        sayText = ""..REDEEMER_C_WHITE.."[";
-        if (RedeemerDisplaySay) then
-            sayText = sayText..""..REDEEMER_C_ON.."on";
+    if (cmd == "EMOTE") then
+        RedeemerDisplayEMOTE = not RedeemerDisplayEMOTE;
+        EMOTEText = ""..REDEEMER_C_WHITE.."[";
+        if (RedeemerDisplayEMOTE) then
+            EMOTEText = EMOTEText..""..REDEEMER_C_ON.."on";
         else
-            sayText = sayText..""..REDEEMER_C_OFF.."off";
+            EMOTEText = EMOTEText..""..REDEEMER_C_OFF.."off";
         end
-        sayText = sayText..""..REDEEMER_C_WHITE.."]";
-        Redeemer_Print("Quotes sent to /say toggled "..sayText)
+        EMOTEText = EMOTEText..""..REDEEMER_C_WHITE.."]";
+        Redeemer_Print("Quotes sent to /EMOTE toggled "..EMOTEText)
 
     elseif (cmd == "party") then
         RedeemerDisplayParty = not RedeemerDisplayParty;
@@ -300,13 +299,13 @@ function Redeemer_SlashOpts(cmd)
         Redeemer_Print("Quotes whispered to target toggled "..whisperText)
 
     else
-        sayText = ""..REDEEMER_C_WHITE.."[";
-        if (RedeemerDisplaySay) then
-            sayText = sayText..""..REDEEMER_C_ON.."on";
+        EMOTEText = ""..REDEEMER_C_WHITE.."[";
+        if (RedeemerDisplayEMOTE) then
+            EMOTEText = EMOTEText..""..REDEEMER_C_ON.."on";
         else
-            sayText = sayText..""..REDEEMER_C_OFF.."off";
+            EMOTEText = EMOTEText..""..REDEEMER_C_OFF.."off";
         end
-        sayText = sayText..""..REDEEMER_C_WHITE.."]";
+        EMOTEText = EMOTEText..""..REDEEMER_C_WHITE.."]";
         partyText = ""..REDEEMER_C_WHITE.."[";
         if (RedeemerDisplayParty) then
             partyText = partyText..""..REDEEMER_C_ON.."on";
@@ -328,7 +327,7 @@ function Redeemer_SlashOpts(cmd)
             whisperText = whisperText..""..REDEEMER_C_OFF.."off";
         end
         whisperText = whisperText..""..REDEEMER_C_WHITE.."]";
-        Redeemer_Print("/redeemer say: Toggle sending quotes to /say "..sayText)
+        Redeemer_Print("/redeemer EMOTE: Toggle sending quotes to /EMOTE "..EMOTEText)
         Redeemer_Print("/redeemer party: Toggle sending quotes to /party "..partyText)
         Redeemer_Print("/redeemer raid: Toggle sending quotes to /raid "..raidText)
         Redeemer_Print("/redeemer whisper: Toggle whispering quotes to target "..whisperText)
@@ -340,7 +339,7 @@ end
 
 --Interface Options Panel functions
 function RedeemerUIPanel_Update()
-    RedeemerUIPanelDisplayOptionsSay:SetChecked(_G["RedeemerDisplaySay"]);
+    RedeemerUIPanelDisplayOptionsEMOTE:SetChecked(_G["RedeemerDisplayEMOTE"]);
     RedeemerUIPanelDisplayOptionsParty:SetChecked(_G["RedeemerDisplayParty"]);
     RedeemerUIPanelDisplayOptionsRaid:SetChecked(_G["RedeemerDisplayRaid"]);
     RedeemerUIPanelDisplayOptionsWhisper:SetChecked(_G["RedeemerDisplayWhisper"]);
@@ -358,10 +357,10 @@ function RedeemerUIPanelOnLoad(panel)
 end
 
 function RedeemerUIPanel_Default()
-    RedeemerDisplaySay = true;
-    RedeemerDisplayParty = false;
-    RedeemerDisplayRaid = false;
-    RedeemerDisplayWhisper = false;
+    RedeemerDisplayEMOTE = true;
+    RedeemerDisplayParty = true;
+    RedeemerDisplayRaid = true;
+    RedeemerDisplayWhisper = true;
 
     TypeDropDown_CurrentValue = 1;
     QuoteList_CurrentStartIndex = 1;
@@ -383,7 +382,7 @@ function RedeemerUIPanel_Okay()
     if not REDEEMER_TEMP then
         RedeemerUIPanel_InitTempVars();
     end
-    RedeemerDisplaySay = Redeemer_YesOrNo(RedeemerUIPanelDisplayOptionsSay);
+    RedeemerDisplayEMOTE = Redeemer_YesOrNo(RedeemerUIPanelDisplayOptionsEMOTE);
     RedeemerDisplayParty = Redeemer_YesOrNo(RedeemerUIPanelDisplayOptionsParty);
     RedeemerDisplayRaid = Redeemer_YesOrNo(RedeemerUIPanelDisplayOptionsRaid);
     RedeemerDisplayWhisper = Redeemer_YesOrNo(RedeemerUIPanelDisplayOptionsWhisper);
